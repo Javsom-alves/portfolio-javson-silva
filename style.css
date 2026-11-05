@@ -1,0 +1,621 @@
+/* =========================================================
+   Folha de estilos - Portfólio Javsom Alves da Silva
+   CSS3 puro, sem frameworks.
+   ========================================================= */
+
+/* ---------- Variáveis de cor (tema claro = padrão) ----------
+   Usar variáveis permite trocar o tema inteiro só mudando
+   os valores quando a classe "escuro" estiver no <body>. */
+:root {
+  --fundo: #f5f7fb;
+  --fundo-cartao: #ffffff;
+  --texto: #1e2433;
+  --texto-suave: #5b6478;
+  --destaque: #2563eb;
+  --destaque-hover: #1d4ed8;
+  --borda: #e3e7ef;
+  --erro: #dc2626;
+  --sombra: 0 4px 20px rgba(30, 36, 51, 0.08);
+  --raio: 12px;
+}
+
+/* ---------- Tema escuro ----------
+   Aplicado quando o JavaScript adiciona a classe "escuro" ao <body> */
+body.escuro {
+  --fundo: #0f172a;
+  --fundo-cartao: #1e293b;
+  --texto: #e2e8f0;
+  --texto-suave: #94a3b8;
+  --destaque: #60a5fa;
+  --destaque-hover: #3b82f6;
+  --borda: #334155;
+  --erro: #f87171;
+  --sombra: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Reset básico ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Rolagem suave ao clicar nos links do menu */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+a {
+  color: var(--destaque);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Centraliza o conteúdo e limita a largura máxima */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================================================
+   CABEÇALHO E MENU
+   ========================================================= */
+.cabecalho {
+  position: fixed;           /* menu sempre visível no topo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--fundo-cartao);
+  border-bottom: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+  z-index: 100;
+  transition: background 0.3s;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.logo span {
+  color: var(--destaque);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-link {
+  color: var(--texto-suave);
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.menu-link:hover {
+  color: var(--destaque);
+  background: var(--fundo);
+}
+
+/* Link da seção atual (classe adicionada pelo JavaScript) */
+.menu-link.ativo {
+  color: #fff;
+  background: var(--destaque);
+}
+
+.tema-toggle {
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+/* Botão hambúrguer: escondido no desktop */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--texto);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Animação do hambúrguer virando um "X" quando aberto */
+.menu-toggle.aberto span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-toggle.aberto span:nth-child(2) { opacity: 0; }
+.menu-toggle.aberto span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* =========================================================
+   ESTRUTURA GERAL DAS SEÇÕES
+   ========================================================= */
+.secao {
+  padding: 100px 0 70px;
+  scroll-margin-top: 40px;   /* compensa o menu fixo ao navegar pelas âncoras */
+}
+
+.titulo-secao {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Linha decorativa abaixo do título */
+.titulo-secao::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 4px;
+  margin-top: 6px;
+  background: var(--destaque);
+  border-radius: 2px;
+}
+
+.subtitulo {
+  color: var(--texto-suave);
+  margin-bottom: 32px;
+}
+
+/* Cartão reutilizável em várias seções */
+.cartao {
+  background: var(--fundo-cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 24px;
+  box-shadow: var(--sombra);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.cartao h3 {
+  margin-bottom: 14px;
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 2px solid var(--destaque);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-primario {
+  background: var(--destaque);
+  color: #fff;
+}
+
+.btn-primario:hover {
+  background: var(--destaque-hover);
+  border-color: var(--destaque-hover);
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--destaque);
+}
+
+.btn-secundario:hover {
+  background: var(--destaque);
+  color: #fff;
+}
+
+/* =========================================================
+   SEÇÃO SOBRE MIM
+   ========================================================= */
+.sobre {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Grid de 2 colunas: texto + cartão */
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.saudacao {
+  color: var(--destaque);
+  font-weight: 600;
+}
+
+.sobre h1 {
+  font-size: 2.6rem;
+  line-height: 1.2;
+}
+
+.cargo {
+  font-size: 1.2rem;
+  color: var(--texto-suave);
+  margin-bottom: 18px;
+}
+
+.sobre-texto p:not(.saudacao):not(.cargo) {
+  margin-bottom: 14px;
+}
+
+.botoes {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.sobre-cartao {
+  text-align: center;
+}
+
+/* Avatar circular com as iniciais */
+.avatar {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--destaque), #7c3aed);
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-lista {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.info-lista li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+.info-lista span {
+  color: var(--texto-suave);
+}
+
+/* Etiquetas de hobbies */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.tags li {
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   SEÇÃO FORMAÇÃO
+   ========================================================= */
+.formacao-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+/* Linha do tempo com marcador lateral */
+.timeline li {
+  position: relative;
+  padding-left: 22px;
+  border-left: 2px solid var(--destaque);
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--destaque);
+}
+
+.timeline-data {
+  font-size: 0.85rem;
+  color: var(--destaque);
+  font-weight: 600;
+}
+
+.timeline p {
+  color: var(--texto-suave);
+}
+
+/* Lista com marcador de "check" */
+.lista-check li {
+  padding: 6px 0 6px 26px;
+  position: relative;
+}
+
+.lista-check li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--destaque);
+}
+
+/* Barra de nível do idioma */
+.idioma-topo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.barra {
+  height: 8px;
+  background: var(--borda);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barra-preenchida {
+  height: 100%;
+  background: var(--destaque);
+}
+
+/* =========================================================
+   SEÇÃO PORTFÓLIO
+   ========================================================= */
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.projeto {
+  display: flex;
+  flex-direction: column;
+}
+
+.projeto p {
+  color: var(--texto-suave);
+  flex: 1;                  /* empurra o botão para o final do cartão */
+  margin-bottom: 18px;
+}
+
+/* Etiquetas com as tecnologias usadas em cada projeto */
+.techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.techs li {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--destaque);
+  border: 1px solid var(--destaque);
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.projeto .btn {
+  align-self: flex-start;
+}
+
+/* Efeito ao passar o mouse no cartão */
+.projeto:hover {
+  transform: translateY(-5px);
+}
+
+.projeto-icone {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   SEÇÃO CONTATO
+   ========================================================= */
+.contato-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.contato-info p {
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.campo input,
+.campo textarea {
+  width: 100%;
+  padding: 12px;
+  font: inherit;
+  color: var(--texto);
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--destaque);
+}
+
+/* Campo com erro (classe adicionada pelo JavaScript) */
+.campo.invalido input,
+.campo.invalido textarea {
+  border-color: var(--erro);
+}
+
+.erro {
+  color: var(--erro);
+  font-size: 0.85rem;
+  min-height: 1em;
+  display: block;
+  margin-top: 4px;
+}
+
+/* =========================================================
+   MODAL DE CONFIRMAÇÃO
+   ========================================================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;            /* escondido por padrão */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 200;
+}
+
+/* Classe "visivel" adicionada pelo JavaScript para mostrar o modal */
+.modal.visivel {
+  display: flex;
+}
+
+.modal-conteudo {
+  background: var(--fundo-cartao);
+  border-radius: var(--raio);
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  animation: aparecer 0.3s ease;
+}
+
+.modal-icone {
+  font-size: 3rem;
+}
+
+.modal-conteudo p {
+  color: var(--texto-suave);
+  margin: 10px 0 20px;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+.rodape {
+  text-align: center;
+  padding: 24px 20px;
+  color: var(--texto-suave);
+  border-top: 1px solid var(--borda);
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   RESPONSIVIDADE (tablets e celulares)
+   ========================================================= */
+@media (max-width: 800px) {
+  /* Mostra o botão hambúrguer */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Menu vira uma lista vertical escondida abaixo do cabeçalho */
+  .menu {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--fundo-cartao);
+    border-bottom: 1px solid var(--borda);
+    padding: 10px 20px 16px;
+    display: none;
+  }
+
+  /* Classe "aberto" adicionada pelo JavaScript ao clicar no hambúrguer */
+  .menu.aberto {
+    display: flex;
+  }
+
+  .menu-link {
+    display: block;
+    padding: 12px;
+  }
+
+  .tema-toggle {
+    margin: 8px 0 0 12px;
+  }
+
+  /* Grids passam a ter uma única coluna */
+  .sobre-grid,
+  .contato-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre h1 {
+    font-size: 2rem;
+  }
+
+  .secao {
+    padding: 90px 0 50px;
+  }
+}

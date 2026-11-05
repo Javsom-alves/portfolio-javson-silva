@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--
+  Portfólio pessoal - Javsom Alves da Silva
+  Atividade Prática - Fundamentos da Programação Web (UNINTER)
+  Modelo escolhido: Single Page Website com navegação por âncoras.
+  Tecnologias: HTML5, CSS3 e JavaScript puro (sem frameworks).
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport: garante que o layout se adapte a celulares e tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de Javsom Alves da Silva - Analista de Suporte e desenvolvedor de automações.">
+  <title>Javsom Alves da Silva | Portfólio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================== CABEÇALHO / MENU =====================
+       Menu fixo no topo, visível em todas as seções.
+       Cada link aponta para o id de uma seção (navegação por âncoras). -->
+  <header class="cabecalho">
+    <nav class="nav container">
+      <a href="#sobre" class="logo">Javsom<span>.</span></a>
+
+      <!-- Botão "hambúrguer": só aparece em telas pequenas (controlado pelo CSS)
+           e abre/fecha o menu via JavaScript -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="menu" id="menu">
+        <li><a href="#sobre" class="menu-link">Sobre mim</a></li>
+        <li><a href="#formacao" class="menu-link">Formação</a></li>
+        <li><a href="#portfolio" class="menu-link">Portfólio</a></li>
+        <li><a href="#contato" class="menu-link">Contato</a></li>
+        <li>
+          <!-- Botão de alternância de tema (claro/escuro) -->
+          <button class="tema-toggle" id="temaToggle" aria-label="Alternar tema claro/escuro">🌙</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===================== SEÇÃO: SOBRE MIM ===================== -->
+    <section id="sobre" class="secao sobre">
+      <div class="container sobre-grid">
+        <div class="sobre-texto">
+          <p class="saudacao">Olá, eu sou</p>
+          <h1>Javsom Alves da Silva</h1>
+          <p class="cargo">Analista de Suporte &amp; Automação</p>
+          <p>
+            Tenho 24 anos e trabalho como <strong>Analista de Suporte</strong> na
+            <strong>Stratura Asfaltos</strong>. No dia a dia, além de atender e resolver
+            problemas técnicos, desenvolvo <strong>códigos de automação</strong> para
+            agilizar tarefas repetitivas e tornar os processos da empresa mais eficientes.
+          </p>
+          <p>
+            Sou apaixonado por tecnologia e estou sempre buscando aprender algo novo,
+            principalmente na área de desenvolvimento.
+          </p>
+          <div class="botoes">
+            <a href="#portfolio" class="btn btn-primario">Ver projetos</a>
+            <a href="#contato" class="btn btn-secundario">Fale comigo</a>
+          </div>
+        </div>
+
+        <!-- Cartão com informações rápidas e hobbies -->
+        <aside class="cartao sobre-cartao">
+          <!-- Avatar com as iniciais (pode ser trocado por <img src="img/foto.jpg">) -->
+          <div class="avatar">JA</div>
+          <ul class="info-lista">
+            <li><span>Idade</span> 24 anos</li>
+            <li><span>Empresa</span> Stratura Asfaltos</li>
+            <li><span>Cargo</span> Analista de Suporte</li>
+          </ul>
+          <h3>Hobbies e interesses</h3>
+          <ul class="tags">
+            <li>🏋️ Academia</li>
+            <li>💻 Tecnologia</li>
+            <li>🎮 Games</li>
+            <li>🎬 Filmes</li>
+            <li>📺 Séries</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== SEÇÃO: FORMAÇÃO ===================== -->
+    <section id="formacao" class="secao">
+      <div class="container">
+        <h2 class="titulo-secao">Formação</h2>
+
+        <div class="formacao-grid">
+          <!-- Linha do tempo com a formação acadêmica -->
+          <div class="cartao">
+            <h3>🎓 Formação acadêmica</h3>
+            <ul class="timeline">
+              <li>
+                <span class="timeline-data">Em andamento</span>
+                <h4>Tecnólogo em Análise e Desenvolvimento de Sistemas</h4>
+                <p>UNINTER - Centro Universitário Internacional</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Cursos e conhecimentos técnicos -->
+          <div class="cartao">
+            <h3>📚 Cursos e conhecimentos</h3>
+            <ul class="lista-check">
+              <li>Fundamentos da Programação Web (HTML5, CSS3 e JavaScript)</li>
+              <li>Programação em Java e Orientação a Objetos</li>
+              <li>APIs REST com Spring Boot e Maven</li>
+              <li>Integração com IA local (Ollama / Llama 3)</li>
+              <li>Suporte técnico e manutenção de computadores</li>
+              <li>Automação de processos</li>
+              <li>Versionamento com Git e GitHub</li>
+            </ul>
+          </div>
+
+          <!-- Idiomas com barra de nível -->
+          <div class="cartao">
+            <h3>🌎 Idiomas</h3>
+            <div class="idioma">
+              <div class="idioma-topo"><span>Português</span><span>Nativo</span></div>
+              <div class="barra"><div class="barra-preenchida" style="width: 100%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SEÇÃO: PORTFÓLIO ===================== -->
+    <section id="portfolio" class="secao">
+      <div class="container">
+        <h2 class="titulo-secao">Portfólio</h2>
+        <p class="subtitulo">Alguns dos trabalhos que já desenvolvi.</p>
+
+        <div class="projetos-grid">
+          <!-- Projeto 1 -->
+          <article class="cartao projeto">
+            <div class="projeto-icone">🌵</div>
+            <h3>Raízes do Nordeste</h3>
+            <p>Sistema de gestão de pedidos para uma rede de lanchonetes, com vários canais de atendimento (app, totem, balcão e retirada), cardápio e estoque por unidade, programa de fidelidade em conformidade com a LGPD, pagamento simulado e auditoria. Projeto Multidisciplinar de ADS.</p>
+            <ul class="techs"><li>Java</li><li>POO</li><li>Arquitetura em camadas</li></ul>
+            <a href="https://github.com/Javsom-alves/Raizes-do-Nordeste" target="_blank" rel="noopener" class="btn btn-secundario">Ver no GitHub</a>
+          </article>
+
+          <!-- Projeto: API com IA -->
+          <article class="cartao projeto">
+            <div class="projeto-icone">📅</div>
+            <h3>Today's Ephemeris</h3>
+            <p>API REST para registrar eventos históricos (efemérides) e fazer perguntas sobre eles, com respostas geradas por um modelo de linguagem rodando localmente.</p>
+            <ul class="techs"><li>Java 17</li><li>Spring Boot</li><li>Ollama</li><li>Llama 3</li></ul>
+            <a href="https://github.com/Javsom-alves/TodaysEphemeris" target="_blank" rel="noopener" class="btn btn-secundario">Ver no GitHub</a>
+          </article>
+
+          <!-- Projeto: página web -->
+          <article class="cartao projeto">
+            <div class="projeto-icone">🤝</div>
+            <h3>Cadastro de Voluntários</h3>
+            <p>Página web para cadastro de voluntários.</p>
+            <ul class="techs"><li>HTML</li></ul>
+            <a href="https://github.com/Javsom-alves/Cadastro-voluntarios" target="_blank" rel="noopener" class="btn btn-secundario">Ver no GitHub</a>
+          </article>
+
+          <!-- Projeto 2 -->
+          <article class="cartao projeto">
+            <div class="projeto-icone">💼</div>
+            <h3>Este Portfólio</h3>
+            <p>Site pessoal feito do zero com HTML5, CSS3 e JavaScript puro: menu responsivo, tema claro/escuro e formulário com validação.</p>
+            <a href="https://github.com/Javsom-alves/portfolio-javson-silva" target="_blank" rel="noopener" class="btn btn-secundario">Ver código</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SEÇÃO: CONTATO ===================== -->
+    <section id="contato" class="secao">
+      <div class="container">
+        <h2 class="titulo-secao">Contato</h2>
+        <p class="subtitulo">Quer conversar? Envie uma mensagem pelo formulário abaixo.</p>
+
+        <div class="contato-grid">
+          <div class="cartao contato-info">
+            <h3>Onde me encontrar</h3>
+            <p>📧 <a href="mailto:Javsom.alves@gmail.com">Javsom.alves@gmail.com</a></p>
+            <p>🐙 <a href="https://github.com/Javsom-alves" target="_blank" rel="noopener">github.com/Javsom-alves</a></p>
+          </div>
+
+          <!-- Formulário de contato.
+               "novalidate" desativa a validação nativa do navegador
+               para que a validação seja feita pelo nosso JavaScript. -->
+          <form class="cartao formulario" id="formContato" novalidate>
+            <div class="campo">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome">
+              <small class="erro" id="erroNome"></small>
+            </div>
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="usuario@dominio.com">
+              <small class="erro" id="erroEmail"></small>
+            </div>
+            <div class="campo">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..."></textarea>
+              <small class="erro" id="erroMensagem"></small>
+            </div>
+            <button type="submit" class="btn btn-primario">Enviar mensagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="rodape">
+    <p>&copy; <span id="ano"></span> Javsom Alves da Silva. Feito com HTML, CSS e JavaScript.</p>
+  </footer>
+
+  <!-- ===================== MODAL DE CONFIRMAÇÃO =====================
+       Fica escondido e é exibido pelo JavaScript após o "envio" do formulário -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-conteudo" role="dialog" aria-labelledby="modalTitulo">
+      <div class="modal-icone">✅</div>
+      <h3 id="modalTitulo">Mensagem enviada com sucesso!</h3>
+      <p id="modalTexto">Obrigado pelo contato. Responderei assim que possível.</p>
+      <button class="btn btn-primario" id="fecharModal">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Script carregado no final do body para que o HTML já esteja pronto -->
+  <script src="script.js"></script>
+</body>
+</html>
