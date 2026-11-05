@@ -363,6 +363,11 @@ ul {
   background: var(--destaque);
 }
 
+/* Espaço entre itens da linha do tempo */
+.timeline li:not(:last-child) {
+  padding-bottom: 18px;
+}
+
 .timeline-data {
   font-size: 0.85rem;
   color: var(--destaque);
@@ -386,6 +391,11 @@ ul {
   color: var(--destaque);
 }
 
+/* Espaço entre idiomas */
+.idioma + .idioma {
+  margin-top: 16px;
+}
+
 /* Barra de nível do idioma */
 .idioma-topo {
   display: flex;
@@ -403,6 +413,58 @@ ul {
 .barra-preenchida {
   height: 100%;
   background: var(--destaque);
+}
+
+/* =========================================================
+   SEÇÃO EXPERIÊNCIA
+   ========================================================= */
+.experiencia-lista {
+  display: grid;
+  gap: 24px;
+}
+
+/* Cabeçalho do cartão: cargo/empresa à esquerda, data à direita */
+.experiencia-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;          /* no celular a data desce para a linha de baixo */
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.experiencia-topo h3 {
+  margin-bottom: 2px;
+}
+
+.experiencia-empresa {
+  color: var(--destaque);
+  font-weight: 600;
+}
+
+.experiencia-data {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  padding: 2px 12px;
+  border-radius: 20px;
+}
+
+.subtitulo-bloco {
+  font-size: 1.4rem;
+  margin-top: 48px;
+}
+
+.competencias {
+  margin-top: 16px;
+}
+
+/* Variante das etiquetas alinhada à esquerda */
+.tags-esquerda {
+  justify-content: flex-start;
 }
 
 /* =========================================================
